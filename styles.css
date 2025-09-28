@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* 🔥 EFECTOS VISUALES ÉPICOS */
+=======
+/* EFECTOS VISUALES ÉPICOS */
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
 .weather-effects {
     position: fixed;
     top: 0;
@@ -10,7 +14,11 @@
     overflow: hidden;
 }
 
+<<<<<<< HEAD
 /* ☔ EFECTO LLUVIA */
+=======
+/* EFECTO LLUVIA */
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
 .rain-effect {
     position: absolute;
     width: 100%;
@@ -38,7 +46,11 @@
     }
 }
 
+<<<<<<< HEAD
 /* ❄️ EFECTO NIEVE */
+=======
+/*  EFECTO NIEVE */
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
 .snow-effect {
     position: absolute;
     width: 100%;
@@ -64,7 +76,11 @@
     }
 }
 
+<<<<<<< HEAD
 /* ⚡ EFECTO RAYOS */
+=======
+/* EFECTO RAYOS */
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
 .lightning-effect {
     position: absolute;
     width: 100%;
@@ -87,7 +103,11 @@
     100% { opacity: 0; }
 }
 
+<<<<<<< HEAD
 /* ☀️ RAYOS DE SOL */
+=======
+/*  RAYOS DE SOL */
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
 .sun-rays {
     position: absolute;
     top: 20%;
@@ -118,7 +138,11 @@
     to { transform: translateX(-50%) rotate(calc(var(--rotation, 0deg) + 360deg)); }
 }
 
+<<<<<<< HEAD
 /* ☁️ NUBES FLOTANTES */
+=======
+/*  NUBES FLOTANTES */
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
 .floating-clouds {
     position: absolute;
     width: 100%;
@@ -164,7 +188,11 @@
     }
 }
 
+<<<<<<< HEAD
 /* 🌊 EFECTO ONDAS DE CALOR */
+=======
+/* EFECTO ONDAS DE CALOR */
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
 .heat-waves {
     position: absolute;
     width: 100%;
@@ -227,12 +255,20 @@ body {
     overflow-x: hidden;
 }
 
+<<<<<<< HEAD
 /* 🎯 ESTADO INICIAL: CENTRADO */
+=======
+/*  ESTADO INICIAL: CENTRADO */
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
 .app-container.centered {
     justify-content: center;
 }
 
+<<<<<<< HEAD
 /* 🎯 ESTADO CON DATOS: LAYOUT DE COLUMNAS */
+=======
+/*  ESTADO CON DATOS: LAYOUT DE COLUMNAS */
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
 .app-container.with-data {
     align-items: flex-start;
     justify-content: flex-start;
@@ -246,7 +282,11 @@ body {
     transition: all 0.8s ease;
 }
 
+<<<<<<< HEAD
 /* 📱 MÓVIL: Siempre centrado y en columna */
+=======
+/* MÓVIL: Siempre centrado y en columna */
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
 @media (max-width: 767px) {
     .app-container {
         justify-content: flex-start;
@@ -258,7 +298,11 @@ body {
     }
 }
 
+<<<<<<< HEAD
 /* 🖥️ DESKTOP: Layout inteligente */
+=======
+/* DESKTOP: Layout inteligente */
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
 @media (min-width: 768px) {
     .app-container {
         padding: 40px 20px;
@@ -737,7 +781,11 @@ body {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
+<<<<<<< HEAD
 /* 🔥 PRONÓSTICO - RESPONSIVE MEJORADO */
+=======
+/*  PRONÓSTICO - RESPONSIVE MEJORADO */
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
 .forecast-display {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
@@ -1017,7 +1065,11 @@ body {
     }
 }
 
+<<<<<<< HEAD
 /* 📱 BREAKPOINTS ESPECÍFICOS */
+=======
+/* BREAKPOINTS ESPECÍFICOS */
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
 
 /* Móvil pequeño */
 @media (max-width: 480px) {
@@ -1059,7 +1111,13 @@ body {
         font-size: 1rem;
     }
     
+<<<<<<< HEAD
         .forecast-temp {
             font-size: 0.75rem;
         }
     }
+=======
+    .forecast-temp {
+        font-size: 0.75rem;
+    }
+>>>>>>> 5a992137b2709796400c3a73a968b72198f378d0
