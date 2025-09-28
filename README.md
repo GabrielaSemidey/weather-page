@@ -22,12 +22,12 @@ Cada personalidad interpreta el clima de manera diferente:
 - **📸 Influencer Fitness**: *"OMG este sunshine es perfect para mi morning workout!"*
 - **🔬 Científico Loco**: *"¡Fascinante! La radiación solar directa alcanza 1000W/m²!"*
 
- ### WIP - 📅 **Pronóstico Extendido**
+### 📅 **Pronóstico Extendido**
 - Predicción de **5 días** con datos reales
 - **Gráfico interactivo** de tendencia de temperatura
 - Tarjetas responsivas con animaciones suaves
 
-### WIP ⚡ **Efectos Visuales Épicos**
+### ⚡ **Efectos Visuales Épicos**
 - **🌧️ Lluvia realista**: Gotas animadas con diferentes velocidades
 - **❄️ Nieve mágica**: Copos únicos que rotan mientras caen
 - **⚡ Rayos de tormenta**: Flashes dramáticos con vibración
@@ -104,7 +104,14 @@ clima-con-personalidad/
 ├── 🎨 styles.css          # Estilos y animaciones
 ├── ⚙️ script.js           # Lógica de la aplicación
 ├── 📖 README.md           # Este archivo
-
+│
+├── 📁 docs/               # Documentación y capturas
+│   ├── screenshot-main.png
+│   ├── screenshot-rain.png
+│   └── ...
+│
+└── 📁 assets/             # Recursos adicionales
+    └── icons/
 ```
 
 ---
