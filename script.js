@@ -88,12 +88,12 @@ const comments = {
     },
     influencer: {
         clear: "OMG este sunshine es perfect para mi morning workout! #VitaminD #Blessed ☀️💪",
-        clouds: "Cloudy vibes pero we're still getting that outdoor cardio! #NoExcuses ☁️🏃‍♀️",
-        rain: "Rain or shine, we train! Indoor HIIT session coming up! #Dedication ☔🏠",
-        snow: "Snow day = perfect time for some hot yoga! Namaste beautiful souls! ❄️🧘‍♀️",
-        thunderstorm: "Storm energy = powerful meditation vibes! Grounding session activated! ⚡🧘",
-        hot: "This heat is giving me life! Perfect for that detox sweat session! 🔥💦",
-        cold: "Cold therapy vibes! Time to boost that metabolism naturally! 🧊🔥"
+        clouds: "Cloudy vibes pero we're getting that outdoor cardio! #NoExcuses ☁️🏃‍♀️",
+        rain: "Rain or shine, hay que entrenar! Indoor HIIT session coming up! #Dedication ☔🏠",
+        snow: "Snow day = perfect time para some hot yoga! Namaste beautiful souls! ❄️🧘‍♀️",
+        thunderstorm: "Storm energías = powerful meditation vibes! Grounding session activada! ⚡🧘",
+        hot: "This heat me da vida! Perfect for that detox sweat session que quieres! 🔥💦",
+        cold: "Cold therapy vibes! Time to boost el metabolismo naturally! 🧊🔥"
     },
     scientist: {
         clear: "¡Fascinante! La radiación solar directa alcanza 1000W/m². ¡Perfecto para mis experimentos! ☀️🔬",
@@ -115,7 +115,7 @@ const weatherIcons = {
     thunderstorm: 'fas fa-bolt'
 };
 
-// 🔥 CONFIGURACIÓN DE LA API REAL - ACTUALIZADA
+// CONFIGURACIÓN DE LA API REAL - ACTUALIZADA
 const API_CONFIG = {
     API_KEY: '4ff3513f03471d115f9889e5ec25eb37', // ✅ Tu API key ya configurada
     BASE_URL: 'https://api.openweathermap.org/data/2.5/weather',
@@ -157,7 +157,7 @@ const elements = {
     floatingClouds: document.getElementById('floating-clouds')
 };
 
-// 🎯 FUNCIÓN PARA CAMBIAR LAYOUT
+// FUNCIÓN PARA CAMBIAR LAYOUT
 function updateLayout() {
     if (hasData) {
         elements.app.classList.remove('centered');
@@ -170,7 +170,7 @@ function updateLayout() {
     }
 }
 
-// 🌈 SISTEMA DE EFECTOS VISUALES ÉPICOS
+// SISTEMA DE EFECTOS VISUALES ÉPICOS
 let activeEffects = [];
 
 function clearAllEffects() {
@@ -337,7 +337,7 @@ function activateWeatherEffects(condition, temperature) {
     }
 }
 
-// 🌍 FUNCIÓN PARA OBTENER PRONÓSTICO DE 5 DÍAS
+// FUNCIÓN PARA OBTENER PRONÓSTICO DE 5 DÍAS
 async function fetchForecast(city) {
     const url = `${API_CONFIG.FORECAST_URL}?q=${city}&appid=${API_CONFIG.API_KEY}&units=metric&lang=es`;
     
@@ -622,7 +622,7 @@ function updateBackground(condition, temperature) {
 function displayWeather(weatherData) {
     currentWeather = weatherData;
     
-    // 🎯 MARCAR QUE TENEMOS DATOS Y ACTUALIZAR LAYOUT
+    // MARCAR QUE TENEMOS DATOS Y ACTUALIZAR LAYOUT
     hasData = true;
     updateLayout();
     
@@ -647,7 +647,7 @@ function displayWeather(weatherData) {
     
     updateBackground(weatherData.condition, weatherData.temperature);
     
-    // 🔥 ACTIVAR EFECTOS VISUALES
+    // ACTIVAR EFECTOS VISUALES
     activateWeatherEffects(weatherData.condition, weatherData.temperature);
     
     elements.weatherDisplay.classList.remove('hidden');
@@ -731,7 +731,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Configurar personalidad inicial
     currentPersonality = elements.personalitySelect.value;
     
-    // 🎯 Inicializar en modo centrado
+    // Inicializar en modo centrado
     hasData = false;
     updateLayout();
     
@@ -745,7 +745,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateLayout();
     });
     
-    // NO cargar datos automáticamente, esperar interacción del usuario
     console.log('✅ Listo para obtener clima real con efectos épicos, diseño responsive y layout inteligente!');
     
     // Cleanup al cerrar la página
@@ -754,23 +753,3 @@ document.addEventListener('DOMContentLoaded', () => {
         window.removeEventListener('resize', resizeCanvas);
     });
 });
-
-// Función simulada de respaldo (por si la API falla)
-function simulateWeatherData(cityName) {
-    const conditions = ['clear', 'clouds', 'rain', 'thunderstorm'];
-    const temps = [15, 22, 8, 30, -2, 35, 18, 25, 12];
-    const humidity = [45, 60, 80, 35, 70, 55];
-    
-    const randomCondition = conditions[Math.floor(Math.random() * conditions.length)];
-    const randomTemp = temps[Math.floor(Math.random() * temps.length)];
-    const randomHumidity = humidity[Math.floor(Math.random() * humidity.length)];
-    
-    return {
-        city: cityName,
-        temperature: randomTemp,
-        condition: randomCondition,
-        humidity: randomHumidity,
-        windSpeed: Math.floor(Math.random() * 20) + 5,
-        visibility: Math.floor(Math.random() * 10) + 5
-    };
-}
