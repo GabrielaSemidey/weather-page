@@ -1,4 +1,4 @@
-/* 🔥 EFECTOS VISUALES ÉPICOS */
+/* EFECTOS VISUALES ÉPICOS */
 .weather-effects {
     position: fixed;
     top: 0;
@@ -10,7 +10,7 @@
     overflow: hidden;
 }
 
-/* ☔ EFECTO LLUVIA */
+/* EFECTO LLUVIA */
 .rain-effect {
     position: absolute;
     width: 100%;
@@ -38,7 +38,7 @@
     }
 }
 
-/* ❄️ EFECTO NIEVE */
+/*  EFECTO NIEVE */
 .snow-effect {
     position: absolute;
     width: 100%;
@@ -64,7 +64,7 @@
     }
 }
 
-/* ⚡ EFECTO RAYOS */
+/* EFECTO RAYOS */
 .lightning-effect {
     position: absolute;
     width: 100%;
@@ -87,7 +87,7 @@
     100% { opacity: 0; }
 }
 
-/* ☀️ RAYOS DE SOL */
+/*  RAYOS DE SOL */
 .sun-rays {
     position: absolute;
     top: 20%;
@@ -118,7 +118,7 @@
     to { transform: translateX(-50%) rotate(calc(var(--rotation, 0deg) + 360deg)); }
 }
 
-/* ☁️ NUBES FLOTANTES */
+/*  NUBES FLOTANTES */
 .floating-clouds {
     position: absolute;
     width: 100%;
@@ -164,7 +164,7 @@
     }
 }
 
-/* 🌊 EFECTO ONDAS DE CALOR */
+/* EFECTO ONDAS DE CALOR */
 .heat-waves {
     position: absolute;
     width: 100%;
@@ -227,12 +227,12 @@ body {
     overflow-x: hidden;
 }
 
-/* 🎯 ESTADO INICIAL: CENTRADO */
+/*  ESTADO INICIAL: CENTRADO */
 .app-container.centered {
     justify-content: center;
 }
 
-/* 🎯 ESTADO CON DATOS: LAYOUT DE COLUMNAS */
+/*  ESTADO CON DATOS: LAYOUT DE COLUMNAS */
 .app-container.with-data {
     align-items: flex-start;
     justify-content: flex-start;
@@ -246,7 +246,7 @@ body {
     transition: all 0.8s ease;
 }
 
-/* 📱 MÓVIL: Siempre centrado y en columna */
+/* MÓVIL: Siempre centrado y en columna */
 @media (max-width: 767px) {
     .app-container {
         justify-content: flex-start;
@@ -258,7 +258,7 @@ body {
     }
 }
 
-/* 🖥️ DESKTOP: Layout inteligente */
+/* DESKTOP: Layout inteligente */
 @media (min-width: 768px) {
     .app-container {
         padding: 40px 20px;
@@ -737,7 +737,7 @@ body {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
-/* 🔥 PRONÓSTICO - RESPONSIVE MEJORADO */
+/*  PRONÓSTICO - RESPONSIVE MEJORADO */
 .forecast-display {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
@@ -1017,7 +1017,7 @@ body {
     }
 }
 
-/* 📱 BREAKPOINTS ESPECÍFICOS */
+/* BREAKPOINTS ESPECÍFICOS */
 
 /* Móvil pequeño */
 @media (max-width: 480px) {
@@ -1059,7 +1059,6 @@ body {
         font-size: 1rem;
     }
     
-        .forecast-temp {
-            font-size: 0.75rem;
-        }
+    .forecast-temp {
+        font-size: 0.75rem;
     }
