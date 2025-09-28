@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima con Personalidad ⛈️</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- 🔥 EFECTOS VISUALES ÉPICOS -->
+        <div id="weather-effects" class="weather-effects">
+            <!-- Partículas de lluvia -->
+            <div id="rain-effect" class="rain-effect hidden"></div>
+            
+            <!-- Copos de nieve -->
+            <div id="snow-effect" class="snow-effect hidden"></div>
+            
+            <!-- Rayos de tormenta -->
+            <div id="lightning-effect" class="lightning-effect hidden"></div>
+            
+            <!-- Rayos de sol -->
+            <div id="sun-rays" class="sun-rays hidden">
+                <div class="sun-ray sun-ray-1"></div>
+                <div class="sun-ray sun-ray-2"></div>
+                <div class="sun-ray sun-ray-3"></div>
+                <div class="sun-ray sun-ray-4"></div>
+            </div>
+            
+            <!-- Nubes flotantes -->
+            <div id="floating-clouds" class="floating-clouds hidden">
+                <div class="cloud cloud-1">☁️</div>
+                <div class="cloud cloud-2">☁️</div>
+                <div class="cloud cloud-3">☁️</div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <h1 class="main-title">Clima con Personalidad ⛈️</h1>
+            <p class="subtitle">El pronóstico que realmente querías escuchar</p>
+        </header>
+
+        <!-- Controls Panel -->
+        <div class="controls-panel">
+            <div class="control-group">
+                <label for="city-input" class="control-label">Ciudad</label>
+                <input 
+                    type="text" 
+                    id="city-input" 
+                    class="city-input" 
+                    placeholder="Escribe una ciudad..."
+                    value="Madrid"
+                >
+            </div>
+            
+            <div class="control-group">
+                <label for="personality-select" class="control-label">Personalidad</label>
+                <select id="personality-select" class="personality-select">
+                    <option value="sarcastic">😏 Sarcástico</option>
+                    <option value="dramatic">🎭 Dramático</option>
+                    <option value="cheerful">😄 Optimista</option>
+                    <option value="poet">📝 Poeta</option>
+                    <option value="millennial">💅 Millennial</option>
+                    <option value="grandpa">🧓 Abuelo Regañón</option>
+                    <option value="coach">💪 Coach Motivacional</option>
+                    <option value="witch">🧙‍♀️ Bruja del Clima</option>
+                    <option value="influencer">📸 Influencer Fitness</option>
+                    <option value="scientist">🔬 Científico Loco</option>
+                </select>
+            </div>
+            
+            <button id="fetch-weather-btn" class="fetch-weather-btn">
+                <span id="btn-text">🔮 ¡Dame el chisme del clima!</span>
+                <div id="loading-spinner" class="loading-spinner hidden">
+                    <i class="fas fa-spinner"></i>
+                </div>
+            </button>
+        </div>
+
+        <!-- Weather Display -->
+        <div id="weather-display" class="weather-display hidden">
+            <div class="weather-header">
+                <h2 id="weather-city" class="weather-city"></h2>
+                <div class="weather-icon-container">
+                    <i id="weather-icon" class="weather-icon"></i>
+                </div>
+                <div id="weather-temp" class="weather-temp"></div>
+            </div>
+
+            <!-- Comentario con personalidad -->
+            <div class="personality-comment">
+                <p id="personality-text" class="personality-text"></p>
+            </div>
+
+            <!-- Detalles del clima actual -->
+            <div class="weather-details">
+                <div class="detail-item">
+                    <i class="fas fa-tint detail-icon"></i>
+                    <p id="humidity" class="detail-value">--</p>
+                    <p class="detail-label">Humedad</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-wind detail-icon"></i>
+                    <p id="wind-speed" class="detail-value">--</p>
+                    <p class="detail-label">Viento</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-eye detail-icon"></i>
+                    <p id="visibility" class="detail-value">--</p>
+                    <p class="detail-label">Visibilidad</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🔥 NUEVA SECCIÓN: Pronóstico de 5 días -->
+        <div id="forecast-display" class="forecast-display hidden">
+            <div class="forecast-header">
+                <h3 class="forecast-title">📅 Pronóstico de 5 días</h3>
+                <p class="forecast-subtitle">Planifica tu semana con estilo</p>
+            </div>
+            
+            <div class="forecast-container">
+                <div id="forecast-cards" class="forecast-cards">
+                    <!-- Las tarjetas se generarán dinámicamente -->
+                </div>
+            </div>
+            
+            <!-- Gráfico de temperatura -->
+            <div class="temperature-chart-container">
+                <h4 class="chart-title">🌡️ Tendencia de Temperatura</h4>
+                <div id="temperature-chart" class="temperature-chart">
+                    <canvas id="temp-canvas" width="350" height="120"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Pronósticos con actitud desde 2025 ✨</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
