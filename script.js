@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-// Configuración y datos 
-const personalities = {
-    sarcastic: { name: '😏 Sarcástico', emoji: '😏' },
-    dramatic: { name: '🎭 Dramático', emoji: '🎭' },
-    cheerful: { name: '😄 Optimista', emoji: '😄' },
-    poet: { name: '📝 Poeta', emoji: '📝' },
-    millennial: { name: '💅 Millennial', emoji: '💅' },
-    grandpa: { name: '🧓 Abuelo Regañón', emoji: '🧓' },
-    coach: { name: '💪 Coach Motivacional', emoji: '💪' },
-    witch: { name: '🧙‍♀️ Bruja del Clima', emoji: '🧙‍♀️' },
-    influencer: { name: '📸 Influencer Fitness', emoji: '📸' },
-    scientist: { name: '🔬 Científico Loco', emoji: '🔬' }
-};
-
-// Comentarios por personalidad y condición climática - ¡EXPANDIDOS!
-=======
 // CONFIGURACION Y DATOS DE PERSONALIDADES
 const personalities = {
     sarcastic: { name: 'Sarcástico', emoji: '😏' },
@@ -30,7 +13,6 @@ const personalities = {
 };
 
 // COMENTARIOS POR PERSONALIDAD Y CLIMA
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
 const comments = {
     sarcastic: {
         clear: "Qué sorpresa, el sol decidió aparecer. ¿Milagro o coincidencia? 🙄",
@@ -108,17 +90,10 @@ const comments = {
         clear: "OMG este sunshine es perfect para mi morning workout! #VitaminD #Blessed ☀️💪",
         clouds: "Cloudy vibes pero we're still getting that outdoor cardio! #NoExcuses ☁️🏃‍♀️",
         rain: "Rain or shine, we train! Indoor HIIT session coming up! #Dedication ☔🏠",
-<<<<<<< HEAD
-        snow: "Snow day = time perfecto for some hot yoga! Namaste beautiful souls! ❄️🧘‍♀️",
-        thunderstorm: "Storm energy = powerful meditación vibes! Sesión de Grounding necesaria! ⚡🧘",
-        hot: "This heat me da vida! Perfect for that detox sweat session! 🔥💦",
-        cold: "Cold therapy vibes! Time to boost el metabolismo! 🧊🔥"
-=======
         snow: "Snow day = perfect time for some hot yoga! Namaste beautiful souls! ❄️🧘‍♀️",
         thunderstorm: "Storm energy = powerful meditation vibes! Grounding session activated! ⚡🧘",
         hot: "This heat is giving me life! Perfect for that detox sweat session! 🔥💦",
         cold: "Cold therapy vibes! Time to boost that metabolism naturally! 🧊🔥"
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     },
     scientist: {
         clear: "¡Fascinante! La radiación solar directa alcanza 1000W/m². ¡Perfecto para mis experimentos! ☀️🔬",
@@ -131,11 +106,7 @@ const comments = {
     }
 };
 
-<<<<<<< HEAD
-// Iconos del clima
-=======
 // ICONOS DE FONT AWESOME PARA CADA CONDICION CLIMATICA
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
 const weatherIcons = {
     clear: 'fas fa-sun',
     clouds: 'fas fa-cloud',
@@ -144,28 +115,13 @@ const weatherIcons = {
     thunderstorm: 'fas fa-bolt'
 };
 
-<<<<<<< HEAD
-// CONFIGURACIÓN DE LA API REAL - ACTUALIZADA
-const API_CONFIG = {
-    API_KEY: '4ff3513f03471d115f9889e5ec25eb37', 
-=======
 // CONFIGURACION DE LA API - CAMBIO: Ahora incluye tu API key real
 const API_CONFIG = {
     API_KEY: '4ff3513f03471d115f9889e5ec25eb37',
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     BASE_URL: 'https://api.openweathermap.org/data/2.5/weather',
     FORECAST_URL: 'https://api.openweathermap.org/data/2.5/forecast'
 };
 
-<<<<<<< HEAD
-// Variables globales
-let currentWeather = null;
-let currentPersonality = 'sarcastic';
-let currentForecastData = null;
-let hasData = false; 
-
-// Elementos del DOM - ACTUALIZADOS CON EFECTOS
-=======
 // VARIABLES GLOBALES
 let currentWeather = null;
 let currentPersonality = 'sarcastic';
@@ -174,7 +130,6 @@ let hasData = false; // CAMBIO: Controla si mostramos layout centrado o 2 column
 let activeEffects = [];
 
 // ELEMENTOS DEL DOM
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
 const elements = {
     app: document.getElementById('app'),
     cityInput: document.getElementById('city-input'),
@@ -190,17 +145,9 @@ const elements = {
     humidity: document.getElementById('humidity'),
     windSpeed: document.getElementById('wind-speed'),
     visibility: document.getElementById('visibility'),
-<<<<<<< HEAD
-    // Elementos de pronóstico
     forecastDisplay: document.getElementById('forecast-display'),
     forecastCards: document.getElementById('forecast-cards'),
     tempCanvas: document.getElementById('temp-canvas'),
-    // 🔥 EFECTOS VISUALES
-=======
-    forecastDisplay: document.getElementById('forecast-display'),
-    forecastCards: document.getElementById('forecast-cards'),
-    tempCanvas: document.getElementById('temp-canvas'),
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     weatherEffects: document.getElementById('weather-effects'),
     rainEffect: document.getElementById('rain-effect'),
     snowEffect: document.getElementById('snow-effect'),
@@ -209,32 +156,11 @@ const elements = {
     floatingClouds: document.getElementById('floating-clouds')
 };
 
-<<<<<<< HEAD
-// FUNCIÓN PARA CAMBIAR LAYOUT
-=======
 // CAMBIO: Nueva función para controlar el layout centrado vs 2 columnas
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
 function updateLayout() {
     if (hasData) {
         elements.app.classList.remove('centered');
         elements.app.classList.add('with-data');
-<<<<<<< HEAD
-        console.log('🎯 Layout: Cambiado a 2 columnas');
-    } else {
-        elements.app.classList.remove('with-data');
-        elements.app.classList.add('centered');
-        console.log('🎯 Layout: Modo centrado');
-    }
-}
-
-// SISTEMA DE EFECTOS VISUALES ÉPICOS
-let activeEffects = [];
-
-function clearAllEffects() {
-    activeEffects.forEach(effect => {
-        clearInterval(effect);
-    });
-=======
         console.log('Layout: 2 columnas activado');
     } else {
         elements.app.classList.remove('with-data');
@@ -246,7 +172,6 @@ function clearAllEffects() {
 // SISTEMA DE EFECTOS VISUALES
 function clearAllEffects() {
     activeEffects.forEach(effect => clearInterval(effect));
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     activeEffects = [];
     
     elements.rainEffect.classList.add('hidden');
@@ -261,10 +186,6 @@ function clearAllEffects() {
 }
 
 function startRainEffect() {
-<<<<<<< HEAD
-    console.log('🌧️ Iniciando efecto de lluvia...');
-=======
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     elements.rainEffect.classList.remove('hidden');
     
     const createRaindrop = () => {
@@ -272,21 +193,10 @@ function startRainEffect() {
         raindrop.className = 'raindrop';
         raindrop.style.left = Math.random() * 100 + '%';
         raindrop.style.animationDuration = (Math.random() * 0.5 + 0.5) + 's';
-<<<<<<< HEAD
-        raindrop.style.opacity = Math.random() * 0.6 + 0.4;
-        
-        elements.rainEffect.appendChild(raindrop);
-        
-        setTimeout(() => {
-            if (raindrop.parentNode) {
-                raindrop.parentNode.removeChild(raindrop);
-            }
-=======
         elements.rainEffect.appendChild(raindrop);
         
         setTimeout(() => {
             if (raindrop.parentNode) raindrop.parentNode.removeChild(raindrop);
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
         }, 1000);
     };
     
@@ -295,15 +205,8 @@ function startRainEffect() {
 }
 
 function startSnowEffect() {
-<<<<<<< HEAD
-    console.log('❄️ Iniciando efecto de nieve...');
-    elements.snowEffect.classList.remove('hidden');
-    
-    const snowflakeSymbols = ['❄', '❅', '❆', '✦', '✧', '❄️'];
-=======
     elements.snowEffect.classList.remove('hidden');
     const snowflakeSymbols = ['❄', '❅', '❆', '✦', '✧'];
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     
     const createSnowflake = () => {
         const snowflake = document.createElement('div');
@@ -311,22 +214,10 @@ function startSnowEffect() {
         snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
         snowflake.style.left = Math.random() * 100 + '%';
         snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
-<<<<<<< HEAD
-        snowflake.style.fontSize = (Math.random() * 0.8 + 0.8) + 'rem';
-        snowflake.style.opacity = Math.random() * 0.8 + 0.2;
-        
-        elements.snowEffect.appendChild(snowflake);
-        
-        setTimeout(() => {
-            if (snowflake.parentNode) {
-                snowflake.parentNode.removeChild(snowflake);
-            }
-=======
         elements.snowEffect.appendChild(snowflake);
         
         setTimeout(() => {
             if (snowflake.parentNode) snowflake.parentNode.removeChild(snowflake);
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
         }, 5000);
     };
     
@@ -335,10 +226,6 @@ function startSnowEffect() {
 }
 
 function startLightningEffect() {
-<<<<<<< HEAD
-    console.log('⚡ Iniciando efecto de rayos...');
-=======
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     elements.lightningEffect.classList.remove('hidden');
     
     const createLightning = () => {
@@ -346,59 +233,29 @@ function startLightningEffect() {
         flash.className = 'lightning-flash';
         elements.lightningEffect.appendChild(flash);
         
-<<<<<<< HEAD
-        if (navigator.vibrate) {
-            navigator.vibrate([50, 100, 50]);
-        }
-        
-        setTimeout(() => {
-            if (flash.parentNode) {
-                flash.parentNode.removeChild(flash);
-            }
-=======
         if (navigator.vibrate) navigator.vibrate([50, 100, 50]);
         
         setTimeout(() => {
             if (flash.parentNode) flash.parentNode.removeChild(flash);
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
         }, 200);
     };
     
     const lightningInterval = setInterval(() => {
-<<<<<<< HEAD
-        if (Math.random() < 0.3) {
-            createLightning();
-        }
-=======
         if (Math.random() < 0.3) createLightning();
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     }, 2000);
     
     activeEffects.push(lightningInterval);
 }
 
 function startSunRaysEffect() {
-<<<<<<< HEAD
-    console.log('☀️ Iniciando rayos de sol...');
-=======
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     elements.sunRays.classList.remove('hidden');
 }
 
 function startCloudEffect() {
-<<<<<<< HEAD
-    console.log('☁️ Iniciando nubes flotantes...');
-=======
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     elements.floatingClouds.classList.remove('hidden');
 }
 
 function startHeatWaveEffect() {
-<<<<<<< HEAD
-    console.log('🌊 Iniciando ondas de calor...');
-    
-=======
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     const heatWaves = document.createElement('div');
     heatWaves.className = 'heat-waves';
     heatWaves.id = 'heat-waves-effect';
@@ -406,13 +263,7 @@ function startHeatWaveEffect() {
     
     const heatTimeout = setTimeout(() => {
         const heatElement = document.getElementById('heat-waves-effect');
-<<<<<<< HEAD
-        if (heatElement && heatElement.parentNode) {
-            heatElement.parentNode.removeChild(heatElement);
-        }
-=======
         if (heatElement && heatElement.parentNode) heatElement.parentNode.removeChild(heatElement);
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     }, 30000);
     
     activeEffects.push(heatTimeout);
@@ -420,16 +271,8 @@ function startHeatWaveEffect() {
 
 function activateWeatherEffects(condition, temperature) {
     clearAllEffects();
-<<<<<<< HEAD
-    
     const weatherType = getWeatherType(condition, temperature);
     
-    console.log(`🎨 Activando efectos para: ${weatherType}`);
-    
-=======
-    const weatherType = getWeatherType(condition, temperature);
-    
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     switch(weatherType) {
         case 'rain':
             startRainEffect();
@@ -456,14 +299,6 @@ function activateWeatherEffects(condition, temperature) {
         case 'cold':
             startCloudEffect();
             break;
-<<<<<<< HEAD
-        default:
-            console.log('🌤️ Clima sin efectos especiales');
-    }
-}
-
-// FUNCIÓN PARA OBTENER PRONÓSTICO DE 5 DÍAS
-=======
     }
 }
 
@@ -492,37 +327,14 @@ async function fetchRealWeather(city) {
     };
 }
 
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
 async function fetchForecast(city) {
     const url = `${API_CONFIG.FORECAST_URL}?q=${city}&appid=${API_CONFIG.API_KEY}&units=metric&lang=es`;
     const response = await fetch(url);
     
-<<<<<<< HEAD
-    try {
-        console.log('📅 Obteniendo pronóstico de 5 días...');
-        
-        const response = await fetch(url);
-        
-        if (!response.ok) {
-            throw new Error(`Error al obtener pronóstico: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log('✅ Pronóstico recibido:', data);
-        
-        const dailyForecasts = processForecastData(data.list);
-        return dailyForecasts;
-        
-    } catch (error) {
-        console.error('❌ Error fetching forecast:', error);
-        throw error;
-    }
-=======
     if (!response.ok) throw new Error('Error al obtener pronóstico');
     
     const data = await response.json();
     return processForecastData(data.list);
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
 }
 
 function processForecastData(forecastList) {
@@ -544,11 +356,7 @@ function processForecastData(forecastList) {
         dailyData[dayKey].conditions.push(item.weather[0].main.toLowerCase());
     });
     
-<<<<<<< HEAD
-    const dailyForecasts = Object.values(dailyData).slice(0, 5).map(day => {
-=======
     return Object.values(dailyData).slice(0, 5).map(day => {
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
         const avgTemp = Math.round(day.temps.reduce((a, b) => a + b) / day.temps.length);
         const maxTemp = Math.round(Math.max(...day.temps));
         const minTemp = Math.round(Math.min(...day.temps));
@@ -582,161 +390,8 @@ function getDayName(date) {
     return days[date.getDay()];
 }
 
-<<<<<<< HEAD
-function displayForecast(forecastData) {
-    currentForecastData = forecastData;
-    
-    elements.forecastCards.innerHTML = '';
-    
-    forecastData.forEach((day, index) => {
-        const card = document.createElement('div');
-        card.className = 'forecast-card';
-        card.style.animationDelay = `${0.1 * index}s`;
-        
-        const iconClass = weatherIcons[day.condition] || 'fas fa-cloud';
-        
-        card.innerHTML = `
-            <div class="forecast-day">${day.dayName}</div>
-            <div class="forecast-icon">
-                <i class="${iconClass}"></i>
-            </div>
-            <div class="forecast-temp">${day.maxTemp}°</div>
-            <div class="forecast-temp-min">${day.minTemp}°</div>
-        `;
-        
-        elements.forecastCards.appendChild(card);
-    });
-    
-    drawTemperatureChart(forecastData);
-    elements.forecastDisplay.classList.remove('hidden');
-}
-
-function drawTemperatureChart(forecastData) {
-    const canvas = elements.tempCanvas;
-    const ctx = canvas.getContext('2d');
-    
-    const containerWidth = canvas.parentElement.offsetWidth - 40;
-    const isMobile = window.innerWidth < 768;
-    
-    if (isMobile) {
-        canvas.width = Math.min(350, containerWidth);
-        canvas.height = 120;
-    } else if (window.innerWidth < 1024) {
-        canvas.width = Math.min(600, containerWidth);
-        canvas.height = 150;
-    } else {
-        canvas.width = Math.min(800, containerWidth);
-        canvas.height = 180;
-    }
-    
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    if (forecastData.length === 0) return;
-    
-    const padding = isMobile ? 25 : 35;
-    const chartWidth = canvas.width - (padding * 2);
-    const chartHeight = canvas.height - (padding * 2);
-    
-    const temps = forecastData.map(d => d.avgTemp);
-    const minTemp = Math.min(...temps) - 2;
-    const maxTemp = Math.max(...temps) + 2;
-    const tempRange = maxTemp - minTemp;
-    
-    const points = forecastData.map((day, index) => {
-        const x = padding + (index * chartWidth / (forecastData.length - 1));
-        const y = padding + chartHeight - ((day.avgTemp - minTemp) / tempRange * chartHeight);
-        return { x, y, temp: day.avgTemp, day: day.dayName };
-    });
-    
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-    ctx.lineWidth = isMobile ? 2 : 3;
-    ctx.font = isMobile ? '11px Arial' : '14px Arial';
-    ctx.textAlign = 'center';
-    
-    ctx.beginPath();
-    ctx.moveTo(points[0].x, points[0].y);
-    
-    for (let i = 1; i < points.length; i++) {
-        const prevPoint = points[i - 1];
-        const currentPoint = points[i];
-        const midX = (prevPoint.x + currentPoint.x) / 2;
-        
-        ctx.quadraticCurveTo(prevPoint.x, prevPoint.y, midX, (prevPoint.y + currentPoint.y) / 2);
-        ctx.quadraticCurveTo(currentPoint.x, currentPoint.y, currentPoint.x, currentPoint.y);
-    }
-    
-    ctx.stroke();
-    
-    points.forEach(point => {
-        ctx.beginPath();
-        const pointRadius = isMobile ? 3 : 5;
-        ctx.arc(point.x, point.y, pointRadius, 0, 2 * Math.PI);
-        ctx.fill();
-        
-        const textOffset = isMobile ? -12 : -15;
-        ctx.fillText(`${point.temp}°`, point.x, point.y + textOffset);
-    });
-}
-
-function resizeCanvas() {
-    if (elements.forecastDisplay && !elements.forecastDisplay.classList.contains('hidden')) {
-        const forecastData = getCurrentForecastData();
-        if (forecastData) {
-            drawTemperatureChart(forecastData);
-        }
-    }
-}
-
-function getCurrentForecastData() {
-    return currentForecastData;
-}
-
-async function fetchRealWeather(city) {
-    const url = `${API_CONFIG.BASE_URL}?q=${city}&appid=${API_CONFIG.API_KEY}&units=metric&lang=es`;
-    
-    try {
-        console.log('🌐 Haciendo petición a:', url.replace(API_CONFIG.API_KEY, 'API_KEY_HIDDEN'));
-        
-        const response = await fetch(url);
-        
-        if (!response.ok) {
-            if (response.status === 404) {
-                throw new Error('Ciudad no encontrada. Intenta con otra ciudad.');
-            } else if (response.status === 401) {
-                throw new Error('API Key inválida. Verifica tu configuración.');
-            } else {
-                throw new Error(`Error del servidor: ${response.status}`);
-            }
-        }
-        
-        const data = await response.json();
-        console.log('✅ Datos recibidos:', data);
-        
-        return {
-            city: data.name,
-            country: data.sys.country,
-            temperature: Math.round(data.main.temp),
-            condition: mapWeatherCondition(data.weather[0].main.toLowerCase()),
-            description: data.weather[0].description,
-            humidity: data.main.humidity,
-            windSpeed: Math.round(data.wind.speed * 3.6),
-            visibility: data.visibility ? Math.round(data.visibility / 1000) : 10,
-            pressure: data.main.pressure,
-            feelsLike: Math.round(data.main.feels_like)
-        };
-    } catch (error) {
-        console.error('❌ Error fetching weather:', error);
-        throw error;
-    }
-}
-
-function mapWeatherCondition(openWeatherCondition) {
-    const conditionMap = {
-=======
 function mapWeatherCondition(condition) {
     const map = {
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
         'clear': 'clear',
         'clouds': 'clouds',
         'rain': 'rain',
@@ -750,8 +405,6 @@ function mapWeatherCondition(condition) {
     return map[condition] || 'clouds';
 }
 
-<<<<<<< HEAD
-=======
 // FUNCIONES DE DISPLAY Y UI
 // CAMBIO: displayWeather ahora activa el layout de 2 columnas
 function displayWeather(weatherData) {
@@ -839,7 +492,6 @@ function drawTemperatureChart(data) {
     });
 }
 
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
 function getWeatherType(condition, temperature) {
     if (temperature > 30) return 'hot';
     if (temperature < 5) return 'cold';
@@ -852,58 +504,12 @@ function getWeatherComment(condition, temperature, personality) {
 }
 
 function updateBackground(condition, temperature) {
-<<<<<<< HEAD
-    const weatherClasses = ['clear', 'clouds', 'rain', 'snow', 'thunderstorm', 'hot', 'cold'];
-    weatherClasses.forEach(cls => elements.app.classList.remove(cls));
-    
-    const weatherType = getWeatherType(condition, temperature);
-    elements.app.classList.add(weatherType);
-}
-
-function displayWeather(weatherData) {
-    currentWeather = weatherData;
-    
-    // MARCAR QUE TENEMOS DATOS Y ACTUALIZAR LAYOUT
-    hasData = true;
-    updateLayout();
-    
-    const personalityEmoji = personalities[currentPersonality].emoji;
-    const cityDisplay = weatherData.country 
-        ? `${weatherData.city}, ${weatherData.country} ${personalityEmoji}`
-        : `${weatherData.city} ${personalityEmoji}`;
-    
-    elements.weatherCity.textContent = cityDisplay;
-    
-    const iconClass = weatherIcons[weatherData.condition] || 'fas fa-cloud';
-    elements.weatherIcon.className = `weather-icon ${iconClass}`;
-    
-    elements.weatherTemp.textContent = `${weatherData.temperature}°C`;
-    
-    const comment = getWeatherComment(weatherData.condition, weatherData.temperature, currentPersonality);
-    elements.personalityText.textContent = comment;
-    
-    elements.humidity.textContent = `${weatherData.humidity}%`;
-    elements.windSpeed.textContent = `${weatherData.windSpeed} km/h`;
-    elements.visibility.textContent = `${weatherData.visibility} km`;
-    
-    updateBackground(weatherData.condition, weatherData.temperature);
-    
-    // ACTIVAR EFECTOS VISUALES
-    activateWeatherEffects(weatherData.condition, weatherData.temperature);
-    
-    elements.weatherDisplay.classList.remove('hidden');
-    
-    console.log('✅ Clima mostrado:', weatherData);
-}
-
-=======
     const classes = ['clear', 'clouds', 'rain', 'snow', 'thunderstorm', 'hot', 'cold'];
     classes.forEach(c => elements.app.classList.remove(c));
     elements.app.classList.add(getWeatherType(condition, temperature));
 }
 
 // EVENTO PRINCIPAL - Obtener clima al hacer clic en el botón
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
 async function fetchWeather() {
     const city = elements.cityInput.value.trim();
     if (!city) {
@@ -916,32 +522,13 @@ async function fetchWeather() {
     elements.loadingSpinner.classList.remove('hidden');
     
     try {
-<<<<<<< HEAD
-        console.log('🌤️ Obteniendo clima actual...');
-=======
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
         const weatherData = await fetchRealWeather(city);
         const forecastData = await fetchForecast(city);
         
-<<<<<<< HEAD
-        // Mostrar datos del clima actual (esto activa el layout de 2 columnas)
-        displayWeather(weatherData);
-        
-        // Mostrar pronóstico de 5 días
-        displayForecast(forecastData);
-        
-        console.log('🎉 ¡Clima y pronóstico obtenidos con éxito!');
-        
-    } catch (error) {
-        console.error('💥 Error:', error.message);
-        alert(`❌ Error: ${error.message}`);
-        
-=======
         displayWeather(weatherData); // CAMBIO: Esto activa el layout de 2 columnas
         displayForecast(forecastData);
     } catch (error) {
         alert('Error: ' + error.message);
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     } finally {
         elements.fetchBtn.disabled = false;
         elements.btnText.classList.remove('hidden');
@@ -954,16 +541,8 @@ function updatePersonalityComment() {
         const comment = getWeatherComment(currentWeather.condition, currentWeather.temperature, currentPersonality);
         elements.personalityText.textContent = comment;
         
-<<<<<<< HEAD
-        const personalityEmoji = personalities[currentPersonality].emoji;
-        const cityDisplay = currentWeather.country 
-            ? `${currentWeather.city}, ${currentWeather.country} ${personalityEmoji}`
-            : `${currentWeather.city} ${personalityEmoji}`;
-        elements.weatherCity.textContent = cityDisplay;
-=======
         const emoji = personalities[currentPersonality].emoji;
         elements.weatherCity.textContent = `${currentWeather.city}, ${currentWeather.country} ${emoji}`;
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     }
 }
 
@@ -979,44 +558,16 @@ elements.cityInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') fetchWeather();
 });
 
-<<<<<<< HEAD
-// Inicialización - CON EFECTOS, RESPONSIVE Y LAYOUT INTELIGENTE
-=======
 // INICIALIZACION - Se ejecuta al cargar la página
 // CAMBIO: Iniciamos en modo centrado, sin datos
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
 document.addEventListener('DOMContentLoaded', () => {
     currentPersonality = elements.personalitySelect.value;
     hasData = false; // CAMBIO: Iniciamos sin datos
     updateLayout(); // CAMBIO: Activamos layout centrado
     
-<<<<<<< HEAD
-    // 🎯 Inicializar en modo centrado
-    hasData = false;
-    updateLayout();
-    
-    // Inicializar sistema de efectos
-    console.log('🎨 Sistema de efectos visuales listo');
-    
-    // 📱 Event listeners para responsive
-    window.addEventListener('resize', () => {
-        resizeCanvas();
-        // Mantener el layout correcto en resize
-        updateLayout();
-    });
-    
-    // NO cargar datos automáticamente, esperar interacción del usuario
-    console.log('✅ Listo para obtener clima real con efectos épicos, diseño responsive y layout inteligente!');
-    
-    // Cleanup al cerrar la página
-    window.addEventListener('beforeunload', () => {
-        clearAllEffects();
-        window.removeEventListener('resize', resizeCanvas);
-=======
     window.addEventListener('resize', () => {
         if (currentForecastData) drawTemperatureChart(currentForecastData);
         updateLayout();
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
     });
     
     window.addEventListener('beforeunload', clearAllEffects);
@@ -1024,25 +575,3 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('App lista - Estado inicial: centrado');
 });
 
-<<<<<<< HEAD
-// Función simulada de respaldo (por si la API falla)
-function simulateWeatherData(cityName) {
-    const conditions = ['clear', 'clouds', 'rain', 'thunderstorm'];
-    const temps = [15, 22, 8, 30, -2, 35, 18, 25, 12];
-    const humidity = [45, 60, 80, 35, 70, 55];
-    
-    const randomCondition = conditions[Math.floor(Math.random() * conditions.length)];
-    const randomTemp = temps[Math.floor(Math.random() * temps.length)];
-    const randomHumidity = humidity[Math.floor(Math.random() * humidity.length)];
-    
-    return {
-        city: cityName,
-        temperature: randomTemp,
-        condition: randomCondition,
-        humidity: randomHumidity,
-        windSpeed: Math.floor(Math.random() * 20) + 5,
-        visibility: Math.floor(Math.random() * 10) + 5
-    };
-}
-=======
->>>>>>> c4b24b98201fa52d8ec51fd2714cf35e5248b6f0
