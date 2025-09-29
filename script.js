@@ -1,19 +1,18 @@
-// Configuración y datos - ¡CON NUEVAS PERSONALIDADES ÉPICAS!
+// CONFIGURACION Y DATOS DE PERSONALIDADES
 const personalities = {
-    sarcastic: { name: '😏 Sarcástico', emoji: '😏' },
-    dramatic: { name: '🎭 Dramático', emoji: '🎭' },
-    cheerful: { name: '😄 Optimista', emoji: '😄' },
-    poet: { name: '📝 Poeta', emoji: '📝' },
-    millennial: { name: '💅 Millennial', emoji: '💅' },
-    grandpa: { name: '🧓 Abuelo Regañón', emoji: '🧓' },
-    coach: { name: '💪 Coach Motivacional', emoji: '💪' },
-    witch: { name: '🧙‍♀️ Bruja del Clima', emoji: '🧙‍♀️' },
-    influencer: { name: '📸 Influencer Fitness', emoji: '📸' },
-    scientist: { name: '🔬 Científico Loco', emoji: '🔬' }
+    sarcastic: { name: 'Sarcástico', emoji: '😏' },
+    dramatic: { name: 'Dramático', emoji: '🎭' },
+    cheerful: { name: 'Optimista', emoji: '😄' },
+    poet: { name: 'Poeta', emoji: '📝' },
+    millennial: { name: 'Millennial', emoji: '💅' },
+    grandpa: { name: 'Abuelo Regañón', emoji: '🧓' },
+    coach: { name: 'Coach Motivacional', emoji: '💪' },
+    witch: { name: 'Bruja del Clima', emoji: '🧙‍♀️' },
+    influencer: { name: 'Influencer Fitness', emoji: '📸' },
+    scientist: { name: 'Científico Loco', emoji: '🔬' }
 };
 
-
-// Comentarios por personalidad y condición climática - ¡EXPANDIDOS!
+// COMENTARIOS POR PERSONALIDAD Y CLIMA
 const comments = {
     sarcastic: {
         clear: "Qué sorpresa, el sol decidió aparecer. ¿Milagro o coincidencia? 🙄",
@@ -107,8 +106,7 @@ const comments = {
     }
 };
 
-
-// Iconos del clima
+// ICONOS DE FONT AWESOME PARA CADA CONDICION CLIMATICA
 const weatherIcons = {
     clear: 'fas fa-sun',
     clouds: 'fas fa-cloud',
@@ -117,21 +115,21 @@ const weatherIcons = {
     thunderstorm: 'fas fa-bolt'
 };
 
-
-// CONFIGURACIÓN DE LA API REAL - ACTUALIZADA
+// CONFIGURACION DE LA API - CAMBIO: Ahora incluye tu API key real
 const API_CONFIG = {
     API_KEY: '4ff3513f03471d115f9889e5ec25eb37',
     BASE_URL: 'https://api.openweathermap.org/data/2.5/weather',
-    FORECAST_URL: 'https://api.openweathermap.org/data/2.5/forecast' // ⚡ Nueva URL para pronóstico
+    FORECAST_URL: 'https://api.openweathermap.org/data/2.5/forecast'
 };
 
-
-// Variables globales
+// VARIABLES GLOBALES
 let currentWeather = null;
 let currentPersonality = 'sarcastic';
+let currentForecastData = null;
+let hasData = false; // CAMBIO: Controla si mostramos layout centrado o 2 columnas
+let activeEffects = [];
 
-
-// Elementos del DOM - ACTUALIZADOS CON EFECTOS
+// ELEMENTOS DEL DOM
 const elements = {
     app: document.getElementById('app'),
     cityInput: document.getElementById('city-input'),
@@ -147,11 +145,9 @@ const elements = {
     humidity: document.getElementById('humidity'),
     windSpeed: document.getElementById('wind-speed'),
     visibility: document.getElementById('visibility'),
-    // Elementos de pronóstico
     forecastDisplay: document.getElementById('forecast-display'),
     forecastCards: document.getElementById('forecast-cards'),
     tempCanvas: document.getElementById('temp-canvas'),
-    // 🔥 EFECTOS VISUALES
     weatherEffects: document.getElementById('weather-effects'),
     rainEffect: document.getElementById('rain-effect'),
     snowEffect: document.getElementById('snow-effect'),
@@ -160,448 +156,242 @@ const elements = {
     floatingClouds: document.getElementById('floating-clouds')
 };
 
+// CAMBIO: Nueva función para controlar el layout centrado vs 2 columnas
+function updateLayout() {
+    if (hasData) {
+        elements.app.classList.remove('centered');
+        elements.app.classList.add('with-data');
+        console.log('Layout: 2 columnas activado');
+    } else {
+        elements.app.classList.remove('with-data');
+        elements.app.classList.add('centered');
+        console.log('Layout: Modo centrado');
+    }
+}
 
-// SISTEMA DE EFECTOS VISUALES ÉPICOS
-let activeEffects = [];
-
-
+// SISTEMA DE EFECTOS VISUALES
 function clearAllEffects() {
-    // Detener todos los efectos activos
-    activeEffects.forEach(effect => {
-        clearInterval(effect);
-    });
+    activeEffects.forEach(effect => clearInterval(effect));
     activeEffects = [];
-   
-    // Ocultar todos los efectos
+    
     elements.rainEffect.classList.add('hidden');
     elements.snowEffect.classList.add('hidden');
     elements.lightningEffect.classList.add('hidden');
     elements.sunRays.classList.add('hidden');
     elements.floatingClouds.classList.add('hidden');
-   
-    // Limpiar contenido de efectos
+    
     elements.rainEffect.innerHTML = '';
     elements.snowEffect.innerHTML = '';
     elements.lightningEffect.innerHTML = '';
 }
 
-
 function startRainEffect() {
-    console.log('🌧️ Iniciando efecto de lluvia...');
     elements.rainEffect.classList.remove('hidden');
-   
+    
     const createRaindrop = () => {
         const raindrop = document.createElement('div');
         raindrop.className = 'raindrop';
         raindrop.style.left = Math.random() * 100 + '%';
         raindrop.style.animationDuration = (Math.random() * 0.5 + 0.5) + 's';
-        raindrop.style.opacity = Math.random() * 0.6 + 0.4;
-       
         elements.rainEffect.appendChild(raindrop);
-       
-        // Remover gota después de la animación
+        
         setTimeout(() => {
-            if (raindrop.parentNode) {
-                raindrop.parentNode.removeChild(raindrop);
-            }
+            if (raindrop.parentNode) raindrop.parentNode.removeChild(raindrop);
         }, 1000);
     };
-   
-    // Crear gotas continuamente
+    
     const rainInterval = setInterval(createRaindrop, 50);
     activeEffects.push(rainInterval);
 }
 
-
 function startSnowEffect() {
-    console.log('❄️ Iniciando efecto de nieve...');
     elements.snowEffect.classList.remove('hidden');
-   
-    const snowflakeSymbols = ['❄', '❅', '❆', '✦', '✧', '❄️'];
-   
+    const snowflakeSymbols = ['❄', '❅', '❆', '✦', '✧'];
+    
     const createSnowflake = () => {
         const snowflake = document.createElement('div');
         snowflake.className = 'snowflake';
         snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
         snowflake.style.left = Math.random() * 100 + '%';
         snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        snowflake.style.fontSize = (Math.random() * 0.8 + 0.8) + 'rem';
-        snowflake.style.opacity = Math.random() * 0.8 + 0.2;
-       
         elements.snowEffect.appendChild(snowflake);
-       
-        // Remover copo después de la animación
+        
         setTimeout(() => {
-            if (snowflake.parentNode) {
-                snowflake.parentNode.removeChild(snowflake);
-            }
+            if (snowflake.parentNode) snowflake.parentNode.removeChild(snowflake);
         }, 5000);
     };
-   
-    // Crear copos continuamente
+    
     const snowInterval = setInterval(createSnowflake, 200);
     activeEffects.push(snowInterval);
 }
 
-
 function startLightningEffect() {
-    console.log('⚡ Iniciando efecto de rayos...');
     elements.lightningEffect.classList.remove('hidden');
-   
+    
     const createLightning = () => {
         const flash = document.createElement('div');
         flash.className = 'lightning-flash';
         elements.lightningEffect.appendChild(flash);
-       
-        // Sonido de trueno simulado con vibración (si está disponible)
-        if (navigator.vibrate) {
-            navigator.vibrate([50, 100, 50]);
-        }
-       
+        
+        if (navigator.vibrate) navigator.vibrate([50, 100, 50]);
+        
         setTimeout(() => {
-            if (flash.parentNode) {
-                flash.parentNode.removeChild(flash);
-            }
+            if (flash.parentNode) flash.parentNode.removeChild(flash);
         }, 200);
     };
-   
-    // Rayos aleatorios
+    
     const lightningInterval = setInterval(() => {
-        if (Math.random() < 0.3) { // 30% probabilidad
-            createLightning();
-        }
+        if (Math.random() < 0.3) createLightning();
     }, 2000);
-   
+    
     activeEffects.push(lightningInterval);
 }
 
-
 function startSunRaysEffect() {
-    console.log('☀️ Iniciando rayos de sol...');
     elements.sunRays.classList.remove('hidden');
-   
-    // Los rayos ya están animados con CSS, solo los mostramos
 }
 
-
 function startCloudEffect() {
-    console.log('☁️ Iniciando nubes flotantes...');
     elements.floatingClouds.classList.remove('hidden');
 }
 
-
 function startHeatWaveEffect() {
-    console.log('🌊 Iniciando ondas de calor...');
-   
-    // Crear div de ondas de calor
     const heatWaves = document.createElement('div');
     heatWaves.className = 'heat-waves';
     heatWaves.id = 'heat-waves-effect';
     elements.weatherEffects.appendChild(heatWaves);
-   
-    // Remover después de un tiempo para no sobrecargar
+    
     const heatTimeout = setTimeout(() => {
         const heatElement = document.getElementById('heat-waves-effect');
-        if (heatElement && heatElement.parentNode) {
-            heatElement.parentNode.removeChild(heatElement);
-        }
+        if (heatElement && heatElement.parentNode) heatElement.parentNode.removeChild(heatElement);
     }, 30000);
-   
+    
     activeEffects.push(heatTimeout);
 }
 
-
-// ACTIVAR EFECTOS SEGÚN EL CLIMA
 function activateWeatherEffects(condition, temperature) {
-    // Limpiar efectos anteriores
     clearAllEffects();
-   
     const weatherType = getWeatherType(condition, temperature);
-   
-    console.log(`🎨 Activando efectos para: ${weatherType}`);
-   
+    
     switch(weatherType) {
         case 'rain':
             startRainEffect();
             startCloudEffect();
             break;
-           
         case 'snow':
             startSnowEffect();
             break;
-           
         case 'thunderstorm':
             startRainEffect();
             startLightningEffect();
             startCloudEffect();
             break;
-           
         case 'clear':
             startSunRaysEffect();
             break;
-           
         case 'clouds':
             startCloudEffect();
             break;
-           
         case 'hot':
             startSunRaysEffect();
             startHeatWaveEffect();
             break;
-           
         case 'cold':
-            // Efecto sutil de viento frío
             startCloudEffect();
             break;
-           
-        default:
-            console.log('🌤️ Clima sin efectos especiales');
     }
 }
 
+// FUNCIONES DE API - Obtener datos del clima real
+async function fetchRealWeather(city) {
+    const url = `${API_CONFIG.BASE_URL}?q=${city}&appid=${API_CONFIG.API_KEY}&units=metric&lang=es`;
+    
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+        if (response.status === 404) throw new Error('Ciudad no encontrada');
+        if (response.status === 401) throw new Error('API Key inválida');
+        throw new Error('Error del servidor: ' + response.status);
+    }
+    
+    const data = await response.json();
+    
+    return {
+        city: data.name,
+        country: data.sys.country,
+        temperature: Math.round(data.main.temp),
+        condition: mapWeatherCondition(data.weather[0].main.toLowerCase()),
+        humidity: data.main.humidity,
+        windSpeed: Math.round(data.wind.speed * 3.6),
+        visibility: data.visibility ? Math.round(data.visibility / 1000) : 10
+    };
+}
 
-// FUNCIÓN PARA API REAL - ACTUALIZADA
 async function fetchForecast(city) {
     const url = `${API_CONFIG.FORECAST_URL}?q=${city}&appid=${API_CONFIG.API_KEY}&units=metric&lang=es`;
-   
-    try {
-        console.log('📅 Obteniendo pronóstico de 5 días...');
-       
-        const response = await fetch(url);
-       
-        if (!response.ok) {
-            throw new Error(`Error al obtener pronóstico: ${response.status}`);
-        }
-       
-        const data = await response.json();
-        console.log('✅ Pronóstico recibido:', data);
-       
-        // Procesar datos para obtener 1 pronóstico por día
-        const dailyForecasts = processForecastData(data.list);
-       
-        return dailyForecasts;
-       
-    } catch (error) {
-        console.error('❌ Error fetching forecast:', error);
-        throw error;
-    }
+    const response = await fetch(url);
+    
+    if (!response.ok) throw new Error('Error al obtener pronóstico');
+    
+    const data = await response.json();
+    return processForecastData(data.list);
 }
 
-
-// PROCESAR DATOS DEL PRONÓSTICO
 function processForecastData(forecastList) {
     const dailyData = {};
-   
-    // Agrupar por día
+    
     forecastList.forEach(item => {
         const date = new Date(item.dt * 1000);
         const dayKey = date.toDateString();
-       
+        
         if (!dailyData[dayKey]) {
             dailyData[dayKey] = {
                 date: date,
                 temps: [],
-                conditions: [],
-                humidity: [],
-                windSpeed: []
+                conditions: []
             };
         }
-       
+        
         dailyData[dayKey].temps.push(item.main.temp);
         dailyData[dayKey].conditions.push(item.weather[0].main.toLowerCase());
-        dailyData[dayKey].humidity.push(item.main.humidity);
-        dailyData[dayKey].windSpeed.push(item.wind.speed * 3.6);
     });
-   
-    // Convertir a array y calcular promedios
-    const dailyForecasts = Object.values(dailyData).slice(0, 5).map(day => {
+    
+    return Object.values(dailyData).slice(0, 5).map(day => {
         const avgTemp = Math.round(day.temps.reduce((a, b) => a + b) / day.temps.length);
         const maxTemp = Math.round(Math.max(...day.temps));
         const minTemp = Math.round(Math.min(...day.temps));
-       
-        // Condición más común del día
+        
         const conditionCounts = {};
-        day.conditions.forEach(condition => {
-            conditionCounts[condition] = (conditionCounts[condition] || 0) + 1;
-        });
-        const mostCommonCondition = Object.keys(conditionCounts).reduce((a, b) =>
+        day.conditions.forEach(c => conditionCounts[c] = (conditionCounts[c] || 0) + 1);
+        const mostCommon = Object.keys(conditionCounts).reduce((a, b) => 
             conditionCounts[a] > conditionCounts[b] ? a : b
         );
-       
+        
         return {
             date: day.date,
             dayName: getDayName(day.date),
             avgTemp,
             maxTemp,
             minTemp,
-            condition: mapWeatherCondition(mostCommonCondition),
-            humidity: Math.round(day.humidity.reduce((a, b) => a + b) / day.humidity.length),
-            windSpeed: Math.round(day.windSpeed.reduce((a, b) => a + b) / day.windSpeed.length)
+            condition: mapWeatherCondition(mostCommon)
         };
     });
-   
-    return dailyForecasts;
 }
 
-
-// OBTENER NOMBRE DEL DÍA
 function getDayName(date) {
     const today = new Date();
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
-   
-    if (date.toDateString() === today.toDateString()) {
-        return 'Hoy';
-    } else if (date.toDateString() === tomorrow.toDateString()) {
-        return 'Mañana';
-    } else {
-        const days = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
-        return days[date.getDay()];
-    }
+    
+    if (date.toDateString() === today.toDateString()) return 'Hoy';
+    if (date.toDateString() === tomorrow.toDateString()) return 'Mañana';
+    
+    const days = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+    return days[date.getDay()];
 }
 
-
-// MOSTRAR PRONÓSTICO DE 5 DÍAS
-function displayForecast(forecastData) {
-    // Limpiar contenido anterior
-    elements.forecastCards.innerHTML = '';
-   
-    // Crear tarjetas de pronóstico
-    forecastData.forEach((day, index) => {
-        const card = document.createElement('div');
-        card.className = 'forecast-card';
-        card.style.animationDelay = `${0.1 * index}s`;
-       
-        const iconClass = weatherIcons[day.condition] || 'fas fa-cloud';
-       
-        card.innerHTML = `
-            <div class="forecast-day">${day.dayName}</div>
-            <div class="forecast-icon">
-                <i class="${iconClass}"></i>
-            </div>
-            <div class="forecast-temp">${day.maxTemp}°</div>
-            <div class="forecast-temp-min">${day.minTemp}°</div>
-        `;
-       
-        elements.forecastCards.appendChild(card);
-    });
-   
-    // Dibujar gráfico de temperatura
-    drawTemperatureChart(forecastData);
-   
-    // Mostrar sección de pronóstico
-    elements.forecastDisplay.classList.remove('hidden');
-}
-
-
-// DIBUJAR GRÁFICO DE TEMPERATURA
-function drawTemperatureChart(forecastData) {
-    const canvas = elements.tempCanvas;
-    const ctx = canvas.getContext('2d');
-   
-    // Limpiar canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-   
-    if (forecastData.length === 0) return;
-   
-    // Configuración del gráfico
-    const padding = 30;
-    const chartWidth = canvas.width - (padding * 2);
-    const chartHeight = canvas.height - (padding * 2);
-   
-    // Encontrar rango de temperaturas
-    const temps = forecastData.map(d => d.avgTemp);
-    const minTemp = Math.min(...temps) - 2;
-    const maxTemp = Math.max(...temps) + 2;
-    const tempRange = maxTemp - minTemp;
-   
-    // Calcular puntos
-    const points = forecastData.map((day, index) => {
-        const x = padding + (index * chartWidth / (forecastData.length - 1));
-        const y = padding + chartHeight - ((day.avgTemp - minTemp) / tempRange * chartHeight);
-        return { x, y, temp: day.avgTemp, day: day.dayName };
-    });
-   
-    // Estilo del gráfico
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-    ctx.lineWidth = 3;
-    ctx.font = '12px Arial';
-    ctx.textAlign = 'center';
-   
-    // Dibujar línea
-    ctx.beginPath();
-    ctx.moveTo(points[0].x, points[0].y);
-   
-    for (let i = 1; i < points.length; i++) {
-        // Línea suave con curvas
-        const prevPoint = points[i - 1];
-        const currentPoint = points[i];
-        const midX = (prevPoint.x + currentPoint.x) / 2;
-       
-        ctx.quadraticCurveTo(prevPoint.x, prevPoint.y, midX, (prevPoint.y + currentPoint.y) / 2);
-        ctx.quadraticCurveTo(currentPoint.x, currentPoint.y, currentPoint.x, currentPoint.y);
-    }
-   
-    ctx.stroke();
-   
-    // Dibujar puntos y temperaturas
-    points.forEach(point => {
-        // Punto
-        ctx.beginPath();
-        ctx.arc(point.x, point.y, 4, 0, 2 * Math.PI);
-        ctx.fill();
-       
-        // Temperatura
-        ctx.fillText(`${point.temp}°`, point.x, point.y - 10);
-    });
-}
-
-
-// FUNCIÓN PARA API REAL - ACTUALIZADA
-async function fetchRealWeather(city) {
-    const url = `${API_CONFIG.BASE_URL}?q=${city}&appid=${API_CONFIG.API_KEY}&units=metric&lang=es`;
-   
-    try {
-        console.log('🌐 Haciendo petición a:', url.replace(API_CONFIG.API_KEY, 'API_KEY_HIDDEN'));
-       
-        const response = await fetch(url);
-       
-        if (!response.ok) {
-            if (response.status === 404) {
-                throw new Error('Ciudad no encontrada. Intenta con otra ciudad.');
-            } else if (response.status === 401) {
-                throw new Error('API Key inválida. Verifica tu configuración.');
-            } else {
-                throw new Error(`Error del servidor: ${response.status}`);
-            }
-        }
-       
-        const data = await response.json();
-        console.log('✅ Datos recibidos:', data);
-       
-        return {
-            city: data.name,
-            country: data.sys.country,
-            temperature: Math.round(data.main.temp),
-            condition: mapWeatherCondition(data.weather[0].main.toLowerCase()),
-            description: data.weather[0].description,
-            humidity: data.main.humidity,
-            windSpeed: Math.round(data.wind.speed * 3.6), // Convertir m/s a km/h
-            visibility: data.visibility ? Math.round(data.visibility / 1000) : 10,
-            pressure: data.main.pressure,
-            feelsLike: Math.round(data.main.feels_like)
-        };
-    } catch (error) {
-        console.error('❌ Error fetching weather:', error);
-        throw error;
-    }
-}
-
-
-// Mapear condiciones de OpenWeather a nuestras condiciones
-function mapWeatherCondition(openWeatherCondition) {
-    const conditionMap = {
+function mapWeatherCondition(condition) {
+    const map = {
         'clear': 'clear',
         'clouds': 'clouds',
         'rain': 'rain',
@@ -610,205 +400,178 @@ function mapWeatherCondition(openWeatherCondition) {
         'thunderstorm': 'thunderstorm',
         'mist': 'clouds',
         'fog': 'clouds',
-        'haze': 'clouds',
-        'dust': 'clouds',
-        'sand': 'clouds',
-        'smoke': 'clouds',
-        'squall': 'thunderstorm',
-        'tornado': 'thunderstorm'
+        'haze': 'clouds'
     };
-   
-    return conditionMap[openWeatherCondition] || 'clouds';
+    return map[condition] || 'clouds';
 }
 
-
-// FUNCIÓN SIMULADA (backup)
-function simulateWeatherData(cityName) {
-    const conditions = ['clear', 'clouds', 'rain', 'thunderstorm'];
-    const temps = [15, 22, 8, 30, -2, 35, 18, 25, 12];
-    const humidity = [45, 60, 80, 35, 70, 55];
-   
-    const randomCondition = conditions[Math.floor(Math.random() * conditions.length)];
-    const randomTemp = temps[Math.floor(Math.random() * temps.length)];
-    const randomHumidity = humidity[Math.floor(Math.random() * humidity.length)];
-   
-    return {
-        city: cityName,
-        temperature: randomTemp,
-        condition: randomCondition,
-        humidity: randomHumidity,
-        windSpeed: Math.floor(Math.random() * 20) + 5,
-        visibility: Math.floor(Math.random() * 10) + 5
-    };
+// FUNCIONES DE DISPLAY Y UI
+// CAMBIO: displayWeather ahora activa el layout de 2 columnas
+function displayWeather(weatherData) {
+    currentWeather = weatherData;
+    hasData = true; // CAMBIO: Activamos el flag de datos
+    updateLayout(); // CAMBIO: Actualizamos el layout a 2 columnas
+    
+    const emoji = personalities[currentPersonality].emoji;
+    elements.weatherCity.textContent = `${weatherData.city}, ${weatherData.country} ${emoji}`;
+    elements.weatherIcon.className = `weather-icon ${weatherIcons[weatherData.condition] || 'fas fa-cloud'}`;
+    elements.weatherTemp.textContent = `${weatherData.temperature}°C`;
+    elements.personalityText.textContent = getWeatherComment(weatherData.condition, weatherData.temperature, currentPersonality);
+    elements.humidity.textContent = `${weatherData.humidity}%`;
+    elements.windSpeed.textContent = `${weatherData.windSpeed} km/h`;
+    elements.visibility.textContent = `${weatherData.visibility} km`;
+    
+    updateBackground(weatherData.condition, weatherData.temperature);
+    activateWeatherEffects(weatherData.condition, weatherData.temperature);
+    
+    elements.weatherDisplay.classList.remove('hidden');
 }
 
+function displayForecast(forecastData) {
+    currentForecastData = forecastData;
+    elements.forecastCards.innerHTML = '';
+    
+    forecastData.forEach((day) => {
+        const card = document.createElement('div');
+        card.className = 'forecast-card';
+        card.innerHTML = `
+            <div class="forecast-day">${day.dayName}</div>
+            <div class="forecast-icon"><i class="${weatherIcons[day.condition]}"></i></div>
+            <div class="forecast-temp">${day.maxTemp}°</div>
+            <div class="forecast-temp-min">${day.minTemp}°</div>
+        `;
+        elements.forecastCards.appendChild(card);
+    });
+    
+    drawTemperatureChart(forecastData);
+    elements.forecastDisplay.classList.remove('hidden');
+}
+
+// CAMBIO: Gráfico ahora es responsive y se ajusta al tamaño de pantalla
+function drawTemperatureChart(data) {
+    const canvas = elements.tempCanvas;
+    const ctx = canvas.getContext('2d');
+    
+    const isMobile = window.innerWidth < 768;
+    canvas.width = isMobile ? 350 : 600;
+    canvas.height = isMobile ? 120 : 150;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    const padding = 30;
+    const chartWidth = canvas.width - (padding * 2);
+    const chartHeight = canvas.height - (padding * 2);
+    
+    const temps = data.map(d => d.avgTemp);
+    const minTemp = Math.min(...temps) - 2;
+    const maxTemp = Math.max(...temps) + 2;
+    const tempRange = maxTemp - minTemp;
+    
+    const points = data.map((day, i) => ({
+        x: padding + (i * chartWidth / (data.length - 1)),
+        y: padding + chartHeight - ((day.avgTemp - minTemp) / tempRange * chartHeight),
+        temp: day.avgTemp
+    }));
+    
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+    ctx.lineWidth = 3;
+    ctx.font = '12px Arial';
+    ctx.textAlign = 'center';
+    
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, points[0].y);
+    points.forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.stroke();
+    
+    points.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 4, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.fillText(p.temp + '°', p.x, p.y - 10);
+    });
+}
 
 function getWeatherType(condition, temperature) {
     if (temperature > 30) return 'hot';
     if (temperature < 5) return 'cold';
-    if (condition === 'snow' && temperature > 0) return 'rain';
     return condition;
 }
 
-
 function getWeatherComment(condition, temperature, personality) {
-    const weatherType = getWeatherType(condition, temperature);
-    return comments[personality][weatherType] ||
-           comments[personality][condition] ||
-           "El clima es... climático 🤷‍♀️";
+    const type = getWeatherType(condition, temperature);
+    return comments[personality][type] || comments[personality][condition] || "El clima es... climático";
 }
-
 
 function updateBackground(condition, temperature) {
-    // Remover todas las clases de clima
-    const weatherClasses = ['clear', 'clouds', 'rain', 'snow', 'thunderstorm', 'hot', 'cold'];
-    weatherClasses.forEach(cls => elements.app.classList.remove(cls));
-   
-    // Agregar la clase correspondiente
-    const weatherType = getWeatherType(condition, temperature);
-    elements.app.classList.add(weatherType);
+    const classes = ['clear', 'clouds', 'rain', 'snow', 'thunderstorm', 'hot', 'cold'];
+    classes.forEach(c => elements.app.classList.remove(c));
+    elements.app.classList.add(getWeatherType(condition, temperature));
 }
 
-
-function displayWeather(weatherData) {
-    currentWeather = weatherData;
-   
-    // Actualizar elementos del DOM
-    const personalityEmoji = personalities[currentPersonality].emoji;
-    const cityDisplay = weatherData.country
-        ? `${weatherData.city}, ${weatherData.country} ${personalityEmoji}`
-        : `${weatherData.city} ${personalityEmoji}`;
-   
-    elements.weatherCity.textContent = cityDisplay;
-   
-    // Actualizar icono
-    const iconClass = weatherIcons[weatherData.condition] || 'fas fa-cloud';
-    elements.weatherIcon.className = `weather-icon ${iconClass}`;
-   
-    // Actualizar temperatura
-    elements.weatherTemp.textContent = `${weatherData.temperature}°C`;
-   
-    // Actualizar comentario
-    const comment = getWeatherComment(weatherData.condition, weatherData.temperature, currentPersonality);
-    elements.personalityText.textContent = comment;
-   
-    // Actualizar detalles
-    elements.humidity.textContent = `${weatherData.humidity}%`;
-    elements.windSpeed.textContent = `${weatherData.windSpeed} km/h`;
-    elements.visibility.textContent = `${weatherData.visibility} km`;
-   
-    // Actualizar fondo
-    updateBackground(weatherData.condition, weatherData.temperature);
-   
-    // 🔥 ACTIVAR EFECTOS VISUALES
-    activateWeatherEffects(weatherData.condition, weatherData.temperature);
-   
-    // Mostrar display del clima
-    elements.weatherDisplay.classList.remove('hidden');
-   
-    // Log para debugging
-    console.log('✅ Clima mostrado:', weatherData);
-}
-
-
-// 🚀 FUNCIÓN PRINCIPAL ACTUALIZADA CON PRONÓSTICO
+// EVENTO PRINCIPAL - Obtener clima al hacer clic en el botón
 async function fetchWeather() {
     const city = elements.cityInput.value.trim();
     if (!city) {
         alert('Por favor, ingresa una ciudad');
         return;
     }
-   
-    // Cambiar estado del botón
+    
     elements.fetchBtn.disabled = true;
     elements.btnText.classList.add('hidden');
     elements.loadingSpinner.classList.remove('hidden');
-   
+    
     try {
-        // 🔥 OBTENER CLIMA ACTUAL Y PRONÓSTICO
-        console.log('🌤️ Obteniendo clima actual...');
         const weatherData = await fetchRealWeather(city);
-       
-        console.log('📅 Obteniendo pronóstico...');
         const forecastData = await fetchForecast(city);
-       
-        // Mostrar datos del clima actual
-        displayWeather(weatherData);
-       
-        // 🆕 Mostrar pronóstico de 5 días
+        
+        displayWeather(weatherData); // CAMBIO: Esto activa el layout de 2 columnas
         displayForecast(forecastData);
-       
-        // Mensaje de éxito
-        console.log('🎉 ¡Clima y pronóstico obtenidos con éxito!');
-       
     } catch (error) {
-        console.error('💥 Error:', error.message);
-       
-        // Mostrar error al usuario
-        alert(`❌ Error: ${error.message}`);
-       
+        alert('Error: ' + error.message);
     } finally {
-        // Restaurar estado del botón
         elements.fetchBtn.disabled = false;
         elements.btnText.classList.remove('hidden');
         elements.loadingSpinner.classList.add('hidden');
     }
 }
 
-
 function updatePersonalityComment() {
     if (currentWeather) {
-        const comment = getWeatherComment(
-            currentWeather.condition,
-            currentWeather.temperature,
-            currentPersonality
-        );
+        const comment = getWeatherComment(currentWeather.condition, currentWeather.temperature, currentPersonality);
         elements.personalityText.textContent = comment;
-       
-        // Actualizar emoji en el título
-        const personalityEmoji = personalities[currentPersonality].emoji;
-        const cityDisplay = currentWeather.country
-            ? `${currentWeather.city}, ${currentWeather.country} ${personalityEmoji}`
-            : `${currentWeather.city} ${personalityEmoji}`;
-        elements.weatherCity.textContent = cityDisplay;
+        
+        const emoji = personalities[currentPersonality].emoji;
+        elements.weatherCity.textContent = `${currentWeather.city}, ${currentWeather.country} ${emoji}`;
     }
 }
 
-
-// Event listeners
+// EVENT LISTENERS
 elements.fetchBtn.addEventListener('click', fetchWeather);
-
 
 elements.personalitySelect.addEventListener('change', (e) => {
     currentPersonality = e.target.value;
     updatePersonalityComment();
 });
 
-
 elements.cityInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        fetchWeather();
-    }
+    if (e.key === 'Enter') fetchWeather();
 });
 
-
-// Inicialización - CON EFECTOS
+// INICIALIZACION - Se ejecuta al cargar la página
+// CAMBIO: Iniciamos en modo centrado, sin datos
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 App iniciada');
-    console.log('🔑 API Key configurada:', API_CONFIG.API_KEY.substring(0, 8) + '...');
-   
-    // Configurar personalidad inicial
     currentPersonality = elements.personalitySelect.value;
-   
-    // Inicializar sistema de efectos
-    console.log('🎨 Sistema de efectos visuales listo');
-   
-    // NO cargar datos automáticamente, esperar interacción del usuario
-    console.log('✅ Listo para obtener clima real con efectos épicos!');
-   
-    // Cleanup al cerrar la página
-    window.addEventListener('beforeunload', () => {
-        clearAllEffects();
+    hasData = false; // CAMBIO: Iniciamos sin datos
+    updateLayout(); // CAMBIO: Activamos layout centrado
+    
+    window.addEventListener('resize', () => {
+        if (currentForecastData) drawTemperatureChart(currentForecastData);
+        updateLayout();
     });
+    
+    window.addEventListener('beforeunload', clearAllEffects);
+    
+    console.log('App lista - Estado inicial: centrado');
 });
 
